@@ -18,9 +18,9 @@ function App() {
 
   async function getRekognitionClient(credentials) {
     const rekognitionClient = new Rekognition({
-      region: "ap-southeast-1",
+      region: "us-east-1",
       credentials,
-      endpoint: "https://rekognition.ap-southeast-1.amazonaws.com",
+      endpoint: "https://rekognition.us-east-1.amazonaws.com",
     });
 
     return rekognitionClient;
@@ -51,7 +51,7 @@ function App() {
         console.log("credentials", credentials);
         const rekognition = await getRekognitionClient(credentials);
         const response = await rekognition
-          .getFaceLivenessSessionResults()
+          .getFaceLivenessSessionResults({ SessionId: createLivenessApiData })
           .promise();
         console.log("response result", response);
       })
@@ -67,7 +67,7 @@ function App() {
           <span>{`sessionId: ${createLivenessApiData}`}</span>
           <FaceLivenessDetector
             sessionId={createLivenessApiData}
-            region="ap-southeast-1"
+            region="us-east-1"
             onAnalysisComplete={handleAnalysisComplete}
           />
         </>
