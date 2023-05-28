@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/session/create": {
+      "name": "/session/create",
+      "lambdaFunction": "createSession",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
